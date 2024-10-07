@@ -17,20 +17,17 @@ const UserSchema = new mongoose.Schema(
             required: true
         },
         firstName: {
-            type: String,
-            required: true
+            type: String
         },
         lastName: {
-            type: String,
-            required: true
+            type: String
         },
         contactNumber: {
             type: String,
             required: true
         },
         country: {
-            type: String,
-            required: true
+            type: String
         },
         role: {
             type: String,
