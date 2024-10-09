@@ -1,60 +1,40 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
-import authRoute from "./routes/auth.js";
-import userRoute from "./routes/user.js";
-import hotelRoute from "./routes/hotel.js";
-import ticketRoute from "./routes/ticket.js";
+import express from 'express';
+import bodyParser from 'body-parser'; // Import body-parser for parsing request bodies
+import cookieParser from 'cookie-parser'; // Import cookie-parser for parsing cookies
+import authRoutes from './routes/auth.js';  // Import the auth routes
+import sequelize from './connect.js';  // Import your Sequelize connection
+import './models/associations.js'; // Import your model associations
+import dotenv from 'dotenv';
 
-const app = express();
-dotenv.config();
+dotenv.config(); // Load environment variables
 
-const connect = async () => {
+// Initialize the database
+const initializeDatabase = async () => {
   try {
-    await mongoose.connect(process.env.MONGO);
-    console.log("Connected to mongoDB.");
+    await sequelize.authenticate();
+    console.log('Database connection has been established successfully.');
+
+    // Sync the models with the database
+    await sequelize.sync({ force: false });
+    console.log('All models were synchronized successfully.');
   } catch (error) {
-    throw error;
+    console.error('Unable to connect to the database:', error);
   }
 };
 
-mongoose.connection.on("disconnected", () => {
-  console.log("mongoDB disconnected!");
-});
+// Call the function to initialize the database
+initializeDatabase();
 
-app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "Something went wrong!";
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack,
-  });
-});
+const app = express();
+const PORT = process.env.PORT || 8000;
 
-// Middlewares
-app.use(cookieParser());
-app.use(express.json());
+app.use(bodyParser.json());  // Use body-parser to parse JSON bodies
+app.use(cookieParser()); // Use cookie-parser to parse cookies
 
-app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute);
-app.use("/api/hotel", hotelRoute);
-app.use("/api/ticket", ticketRoute);
+// Use the auth routes
+app.use('/auth', authRoutes);  // Mount the auth routes under /auth
 
-app.use((err, req, res, next) => {
-  const errorStatus = err.status || 500;
-  const errorMessage = err.message || "Something went wrong!";
-  return res.status(errorStatus).json({
-    success: false,
-    status: errorStatus,
-    message: errorMessage,
-    stack: err.stack,
-  });
-});
-
-app.listen(8080, () => {
-  connect();
-  console.log("Connected to backend.");
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

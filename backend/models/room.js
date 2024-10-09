@@ -19,7 +19,7 @@ const Room = sequelize.define("Room",{
     type: DataTypes.STRING,
   },
   roomNumbers: {
-    tyoe: DataTypes.JSON,
+    type: DataTypes.JSON,
   }
 },
 {timestamps: true}

@@ -20,3 +20,5 @@ const BookingFlight = sequelize.define("BookingFlight", {
 },
 { timestamps: true }
 )
+
+export default BookingFlight; 
