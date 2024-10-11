@@ -1,10 +1,11 @@
 import express from 'express';
-import bodyParser from 'body-parser'; // Import body-parser for parsing request bodies
-import cookieParser from 'cookie-parser'; // Import cookie-parser for parsing cookies
-import authRoutes from './routes/auth.js';  // Import the auth routes
-import sequelize from './connect.js';  // Import your Sequelize connection
-import './models/associations.js'; // Import your model associations
+import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import sequelize from './connect.js';
+import './models/associations.js'; 
+import authRoutes from './routes/auth.js'; 
+import userRoutes from "./routes/user.js";
 
 dotenv.config(); // Load environment variables
 
@@ -32,9 +33,10 @@ app.use(bodyParser.json());  // Use body-parser to parse JSON bodies
 app.use(cookieParser()); // Use cookie-parser to parse cookies
 
 // Use the auth routes
-app.use('/auth', authRoutes);  // Mount the auth routes under /auth
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+})

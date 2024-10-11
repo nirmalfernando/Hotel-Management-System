@@ -1,26 +1,38 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
-dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT;
 
-export const authRole = (role) => {
-  return (req, res, next) => {
-    // Retrieve the JWT token from cookies or Authorization header
-    const token = req.cookies?.accessToken || req.headers.authorization?.split(" ")[1];
+// Middleware to verify the token and extract user information
+export const verifyToken = (req, res, next) => {
+  const token = req.cookies.accessToken || req.headers.authorization?.split(" ")[1];
 
-    if (!token) return res.status(401).json("Access token required");
+  if (!token) {
+    return res.status(403).json({ message: "Access denied. No Token provided" });
+  }
 
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-      if (err) return res.status(403).json("Invalid token");
+  try{
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
+    next();
+  }
+  catch (error) {
+    console.error("Error verifying token:", error);
+    return res.status(500).json({ message: "Unable to verify token", error: error.message });
+  }
+}  
 
-      req.user = user; // Attach the user info from the JWT payload to req.user
+// Middleware to check if the user is an admin
+export const isAdmin = (req, res, next ) => {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({ message: "Access denied. Admin only" });
+  }
+  next();
+}
 
-      if (req.user.role !== role) {
-        return res.status(403).json("You do not have permission to access this resource");
-      }
-
-      next();
-    });
-  };
-};
+// Middleware to check if the user is the owner of the account or an admin
+export const isOwnerOrAdmin = (req, res, next) => {
+  if (req.user.role !== "admin" && req.user.id !== parseInt(req.params.id)) {
+    return res.status(403).json({ message: "Access denied. Admin or Owner only" });
+  }
+  next();
+}
