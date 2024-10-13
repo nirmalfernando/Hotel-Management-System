@@ -1,6 +1,6 @@
 import express from "express";
 import { createHotel, updateHotel, getHotels, getHotelById, deleteHotel } from "../controllers/hotel.js";
-import { verifyToken, isAdmin } from "../middleware/auth.js";
+import { verifyToken, isAdmin } from "../middlewares/authRole.js";
 
 const router = express.Router();
 

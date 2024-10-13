@@ -93,7 +93,7 @@ export const login = async (req, res) => {
     res
       .cookie("accessToken", token, { httpOnly: true })
       .status(200)
-      .json({ token, user: userData });
+      .json({ user: userData });
   } catch (error) {
     console.error("Error logging in user:", error);
     return res.status(500).json({
