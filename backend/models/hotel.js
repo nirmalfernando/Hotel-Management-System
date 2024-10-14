@@ -31,6 +31,9 @@ const Hotel = sequelize.define("Hotel", {
   description: {
     type: DataTypes.STRING,
   },
+  room: {
+    type: DataTypes.JSON
+  },
   rating: {
     type: DataTypes.FLOAT,
     validate: {

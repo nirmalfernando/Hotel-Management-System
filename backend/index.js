@@ -9,6 +9,7 @@ import userRoutes from "./routes/users.js";
 import hotelRoutes from "./routes/hotels.js";
 import bookingRoutes from "./routes/bookings.js";
 import flightRoutes from "./routes/flights.js";
+import roomRoutes from "./routes/rooms.js";
 
 dotenv.config(); // Load environment variables
 
@@ -41,6 +42,7 @@ app.use("/users", userRoutes);
 app.use("/hotels", hotelRoutes);
 app.use("/bookings", bookingRoutes);
 app.use("/flights", flightRoutes);
+app.use("/rooms", roomRoutes);
 
 // Start the server
 app.listen(PORT, () => {
