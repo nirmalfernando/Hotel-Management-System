@@ -6,19 +6,19 @@ dotenv.config();
 
 // Create a new Sequelize instance and configure the database connection
 const sequelize = new Sequelize(
-  process.env.DB_NAME,        // Database name
-  process.env.DB_USER,        // Database username
-  process.env.DB_PASS,        // Database password
+  process.env.DB_NAME,        
+  process.env.DB_USER,        
+  process.env.DB_PASS,        
   {
-    host: process.env.DB_HOST,      // Database host (e.g., localhost)
-    dialect: process.env.DB_DIALECT, // Database dialect (e.g., postgres)
-    port: process.env.DB_PORT || 5432,  // Database port, default to 5432
-    logging: true,                 // Enable SQL logging
+    host: process.env.DB_HOST,      
+    dialect: process.env.DB_DIALECT, 
+    port: process.env.DB_PORT || 5432,  
+    logging: true,                
     pool: {
-      max: 5, // Maximum number of connection in pool
-      min: 0, // Minimum number of connection in pool
-      acquire: 30000, // The maximum time, in milliseconds, that pool will try to get connection before throwing error
-      idle: 10000, // The maximum time, in milliseconds, that a connection can be idle before being released
+      max: 5, 
+      min: 0, 
+      acquire: 30000,
+      idle: 10000, 
     },
   }
 );
