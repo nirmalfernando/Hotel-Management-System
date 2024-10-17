@@ -6,6 +6,7 @@ import Login from './pages/Login'; // Make sure this path is correct
 import Register from './pages/Register'; // Make sure this path is correct
 import NotFound from './pages/NotFound'; // Make sure this path is correct
 import Home from './pages/Home'; // Make sure this path is correct
+import Hotels from './pages/Hotels'; // Make sure this path is correct  
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/hotels" element={<Hotels />} />
         
         {/* Handle 404 page */}
         <Route path="*" element={<NotFound />} />
