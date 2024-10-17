@@ -1,4 +1,5 @@
 import Flight from "../models/flight.js";
+import logger from "../middlewares/logger.js";
 
 // Create a new Flight
 export const createFlight = async (req, res) => {
@@ -30,7 +31,7 @@ export const createFlight = async (req, res) => {
       .status(201)
       .json({ message: "Flight created successfully!", flight: newFlight });
   } catch (error) {
-    console.error("Error creating flight: ", error);
+    logger.error("Error creating flight: ", error);
     return res
       .status(500)
       .json({ message: "Unable to create Flight", error: error.message });
@@ -45,7 +46,7 @@ export const getFlights = async (req, res) => {
     });
     return res.status(200).json({ flights });
   } catch (error) {
-    console.error("Error getting flights: ", error);
+    logger.error("Error getting flights: ", error);
     return res
       .status(500)
       .json({ message: "Unable to get flights", error: error.message });
@@ -63,7 +64,7 @@ export const getFlight = async (req, res) => {
     }
     return res.status(200).json({ flight });
   } catch (error) {
-    console.error("Error getting flight by ID: ", error);
+    logger.error("Error getting flight by ID: ", error);
     return res
       .status(500)
       .json({ message: "Unable to get flight by ID", error: error.message });
@@ -122,7 +123,7 @@ export const updateFlight = async (req, res) => {
       .status(200)
       .json({ message: "Flight updated successfully!", flight });
   } catch (error) {
-    console.error("Error updating flight by ID: ", error);
+    logger.error("Error updating flight by ID: ", error);
     return res
       .status(500)
       .json({ message: "Unable to update flight by ID", error: error.message });
@@ -145,7 +146,7 @@ export const deleteFlight = async (req, res) => {
 
     return res.status(200).json({ message: "Flight deleted successfully!" });
   } catch (error) {
-    console.error("Error deleting flight by ID: ", error);
+    logger.error("Error deleting flight by ID: ", error);
     return res
       .status(500)
       .json({ message: "Unable to delete flight by ID", error: error.message });

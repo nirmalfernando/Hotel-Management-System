@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { Op } from "sequelize";
+import logger from "../middlewares/logger.js";
 
 dotenv.config();
 
@@ -52,7 +53,7 @@ export const register = async (req, res) => {
       .status(201)
       .json({ message: "User created successfully!", user: newUser });
   } catch (error) {
-    console.error("Error creating user:", error);
+    logger.error("Error creating user:", error);
     return res.status(500).json({
       message: "Unable to create user",
       error: error.message, // Include the error message for debugging
@@ -91,11 +92,11 @@ export const login = async (req, res) => {
     // Send the token and user details (without the password)
     const { password: userPassword, ...userData } = user.toJSON();
     res
-      .cookie("accessToken", token, { httpOnly: true })
+      .cookie("accessToken", token, { httpOnly: true, secure: true })
       .status(200)
       .json({ user: userData });
   } catch (error) {
-    console.error("Error logging in user:", error);
+    logger.error("Error logging in user:", error);
     return res.status(500).json({
       message: "Unable to login user",
       error: error.message, // Include the error message for debugging

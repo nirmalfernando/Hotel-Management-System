@@ -1,6 +1,7 @@
 import Room from "../models/room.js";
 import Hotel from "../models/hotel.js";
 import sequelize from "../connect.js";
+import logger from "../middlewares/logger.js";
 
 // Create a Room under the Hotel through the Hotel ID
 export const createRoom = async (req, res) => {
@@ -32,7 +33,7 @@ export const createRoom = async (req, res) => {
         { where: { id: hotelId } }
       );
     } catch (error) {
-      console.error("Error updating hotel with new room: ", error);
+      logger.error("Error updating hotel with new room: ", error);
       return res.status(500).json({
         message: "Unable to update Hotel with new Room",
         error: error.message,
@@ -43,7 +44,7 @@ export const createRoom = async (req, res) => {
       .status(201)
       .json({ message: "Room created successfully!", room: newRoom });
   } catch (error) {
-    console.error("Error creating room: ", error);
+    logger.error("Error creating room: ", error);
     return res
       .status(500)
       .json({ message: "Unable to create Room", error: error.message });
@@ -88,7 +89,7 @@ export const updateRoom = async (req, res) => {
       .status(200)
       .json({ message: "Room updated successfully!", room });
   } catch (error) {
-    console.error("Error updating room: ", error);
+    logger.error("Error updating room: ", error);
     return res
       .status(500)
       .json({ message: "Unable to update Room", error: error.message });
@@ -111,7 +112,7 @@ export const deleteRoom = async (req, res) => {
 
     return res.status(200).json({ message: "Room deleted successfully!" });
   } catch (error) {
-    console.error("Error deleting room: ", error);
+    logger.error("Error deleting room: ", error);
     return res
       .status(500)
       .json({ message: "Unable to delete Room", error: error.message });
@@ -125,7 +126,7 @@ export const getRooms = async (req, res) => {
 
     return res.status(200).json({ rooms });
   } catch (error) {
-    console.error("Error getting rooms: ", error);
+    logger.error("Error getting rooms: ", error);
     return res
       .status(500)
       .json({ message: "Unable to get Rooms", error: error.message });
@@ -145,7 +146,7 @@ export const getRoomById = async (req, res) => {
 
     return res.status(200).json({ room });
   } catch (error) {
-    console.error("Error getting room: ", error);
+    logger.error("Error getting room: ", error);
     return res
       .status(500)
       .json({ message: "Unable to get Room", error: error.message });
@@ -180,7 +181,7 @@ export const bookRoom = async (req, res) => {
 
     return res.status(200).json({ message: "Room booked successfully!", room });
   } catch (error) {
-    console.error("Error booking room: ", error);
+    logger.error("Error booking room: ", error);
     return res
       .status(500)
       .json({ message: "Unable to book Room", error: error.message });

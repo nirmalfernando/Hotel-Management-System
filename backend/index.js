@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import sequelize from "./connect.js";
+import logger from "./middlewares/logger.js";
 import "./models/associations.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
@@ -33,6 +34,15 @@ initializeDatabase();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Middleware to log errors
+app.use((err, req, res, next) => {
+  logger.error(err.message, err);
+  res.status(500).json({
+    message: "Something went wrong. Please try again later.",
+  });
+});
+
+// Middleware to handle JSON and cookie parsing
 app.use(bodyParser.json()); // Use body-parser to parse JSON bodies
 app.use(cookieParser()); // Use cookie-parser to parse cookies
 
@@ -46,5 +56,5 @@ app.use("/rooms", roomRoutes);
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  logger.info(`Server is running on port ${PORT}`);
 });

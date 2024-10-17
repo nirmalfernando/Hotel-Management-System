@@ -1,6 +1,7 @@
 import Booking from "../models/booking.js";
 import Hotel from "../models/hotel.js";
 import User from "../models/user.js";
+import logger from "../middlewares/logger.js";
 
 // Create a new booking
 export const createBooking = async (req, res) => {
@@ -22,7 +23,7 @@ export const createBooking = async (req, res) => {
         return res.status(201).json({ message: "Booking created successfully!", booking: newBooking});
     }
     catch (error){
-        console.error("Error creating booking", error);
+        logger.error("Error creating booking", error);
         return res.status(500).json({ message: "Unable to create the booking", error: error.message})
     }
 }
@@ -48,7 +49,7 @@ export const getBookings = async (req, res) => {
         return res.status(200).json({ bookings });
     }
     catch(error){
-        console.error("Error fetching bookings", error);
+        logger.error("Error fetching bookings", error);
         return res.status(500).json({ message: "Unable to fetch bookings", error: error.message});
     }
 }
@@ -80,7 +81,7 @@ export const getBookingById = async (req, res) => {
         return res.status(200).json({ booking });
     }
     catch(error){
-        console.error("Error fetching booking by id", error);
+        logger.error("Error fetching booking by id", error);
         return res.status(500).json({ message: "Unable to fetch the booking", error: error.message});
     }
 }
@@ -131,7 +132,7 @@ export const updateBooking = async (req, res) => {
         return res.status(200).json({ message: "Booking updated successfully!", booking });
     }
     catch(error){
-        console.error("Error updating booking", error);
+        logger.error("Error updating booking", error);
         return res.status(500).json({ message: "Unable to update the booking", error: error.message});
     }
 }
@@ -154,7 +155,7 @@ export const deleteBooking = async (req, res) => {
         return res.status(200).json({ message: "Booking cancelled successfully!", booking });
     }
     catch(error){
-        console.error("Error deleting booking", error);
+        logger.error("Error deleting booking", error);
         return res.status(500).json({ message: "Unable to delete the booking", error: error.message});
     }
 }
