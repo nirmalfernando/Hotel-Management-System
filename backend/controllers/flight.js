@@ -27,6 +27,7 @@ export const createFlight = async (req, res) => {
       status: true,
     });
 
+    logger.info("Flight created successfully: ${newFlight.id}");
     return res
       .status(201)
       .json({ message: "Flight created successfully!", flight: newFlight });
@@ -44,6 +45,8 @@ export const getFlights = async (req, res) => {
     const flights = await Flight.findAll({
       where: { status: true },
     });
+
+    logger.info("Flights retrieved successfully");
     return res.status(200).json({ flights });
   } catch (error) {
     logger.error("Error getting flights: ", error);
@@ -62,6 +65,8 @@ export const getFlight = async (req, res) => {
     if (!flight) {
       return res.status(404).json({ message: "Flight not found" });
     }
+
+    logger.info("Flight retrieved successfully: ${flight.id}");
     return res.status(200).json({ flight });
   } catch (error) {
     logger.error("Error getting flight by ID: ", error);
@@ -119,6 +124,7 @@ export const updateFlight = async (req, res) => {
 
     await flight.save();
 
+    logger.info("Flight updated successfully: ${flight.id}");
     return res
       .status(200)
       .json({ message: "Flight updated successfully!", flight });
@@ -144,6 +150,7 @@ export const deleteFlight = async (req, res) => {
     flight.status = false;
     await flight.save();
 
+    logger.info("Flight deleted successfully: ${flight.id}");
     return res.status(200).json({ message: "Flight deleted successfully!" });
   } catch (error) {
     logger.error("Error deleting flight by ID: ", error);

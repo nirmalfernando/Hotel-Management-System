@@ -33,6 +33,7 @@ export const createHotel = async (req, res) => {
       status: true,
     });
 
+    logger.info("Hotel created successfully: ${newHotel.id}");
     return res
       .status(201)
       .json({ message: "Hotel created successfully!", hotel: newHotel });
@@ -50,6 +51,8 @@ export const getHotels = async (req, res) => {
     const hotels = await Hotel.findAll({
       where: { status: true },
     });
+
+    logger.info("Hotels retrieved successfully");
     return res.status(200).json({ hotels });
   } catch (error) {
     logger.error("Error getting hotels: ", error);
@@ -68,6 +71,8 @@ export const getHotelById = async (req, res) => {
     if (!hotel) {
       return res.status(404).json({ message: "Hotel not found" });
     }
+
+    logger.info("Hotel retrieved successfully: ${hotel.id}");
     return res.status(200).json({ hotel });
   } catch (error) {
     logger.error("Error getting hotel by ID: ", error);
@@ -139,6 +144,7 @@ export const updateHotel = async (req, res) => {
     // Save the updated hotel
     await hotel.save();
 
+    logger.info("Hotel updated successfully: ${hotel.id}");
     return res
       .status(200)
       .json({ message: "Hotel updated successfully!", hotel });
@@ -165,6 +171,7 @@ export const deleteHotel = async (req, res) => {
     hotel.status = false;
     await hotel.save();
 
+    logger.info("Hotel deleted successfully: ${hotel.id}");
     return res.status(200).json({ message: "Hotel deleted successfully!" });
   } catch (error) {
     logger.error("Error deleting hotel:", error);

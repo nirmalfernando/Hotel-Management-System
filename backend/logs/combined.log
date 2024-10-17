@@ -1,0 +1,28 @@
+2024-10-17T17:37:41.158Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:39:46.683Z [Hotel Management System] error: Error: WHERE parameter "username" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1743:13)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1734:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1732:35)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1840:30
+    at Array.map (<anonymous>)
+    at PostgresQueryGenerator._whereGroupBind (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1839:21)
+    at PostgresQueryGenerator.whereItemQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1790:19)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1734:25
+    at Array.forEach (<anonymous>)
+2024-10-17T17:41:12.544Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:42:05.479Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:42:09.063Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:48:13.519Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:49:27.377Z [Hotel Management System] info: User logged in successfully!
+2024-10-17T17:51:50.772Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:52:49.112Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:53:34.366Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:54:10.012Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:55:06.974Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:57:19.629Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T17:59:25.299Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T18:01:02.933Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T18:02:01.904Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T18:03:12.615Z [Hotel Management System] info: Server is running on port 8000
+2024-10-17T18:03:50.191Z [Hotel Management System] info: Server is running on port 8000

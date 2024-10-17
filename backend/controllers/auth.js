@@ -49,6 +49,10 @@ export const register = async (req, res) => {
       status: true,
     });
 
+    logger.info(
+      "User created successfully: ${newUser.username} (${newUser.email})"
+    );
+
     return res
       .status(201)
       .json({ message: "User created successfully!", user: newUser });
@@ -95,6 +99,9 @@ export const login = async (req, res) => {
       .cookie("accessToken", token, { httpOnly: true, secure: true })
       .status(200)
       .json({ user: userData });
+    logger.info(
+      "User logged in successfully: ${user.username} (${user.email})"
+    );
   } catch (error) {
     logger.error("Error logging in user:", error);
     return res.status(500).json({
@@ -108,4 +115,7 @@ export const login = async (req, res) => {
 export const logout = (req, res) => {
   res.clearCookie("accessToken");
   res.status(200).json({ message: "User logged out" });
+  logger.info(
+    "User logged out successfully: ${req.user.username} (${req.user.email})"
+  );
 };

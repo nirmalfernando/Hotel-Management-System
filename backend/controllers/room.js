@@ -40,6 +40,7 @@ export const createRoom = async (req, res) => {
       });
     }
 
+    logger.info("Room created successfully: ${newRoom.id}");
     return res
       .status(201)
       .json({ message: "Room created successfully!", room: newRoom });
@@ -85,6 +86,7 @@ export const updateRoom = async (req, res) => {
 
     await room.save();
 
+    logger.info("Room updated successfully: ${room.id}");
     return res
       .status(200)
       .json({ message: "Room updated successfully!", room });
@@ -110,6 +112,7 @@ export const deleteRoom = async (req, res) => {
     room.status = false;
     await room.save();
 
+    logger.info("Room deleted successfully: ${room.id}");
     return res.status(200).json({ message: "Room deleted successfully!" });
   } catch (error) {
     logger.error("Error deleting room: ", error);
@@ -124,6 +127,7 @@ export const getRooms = async (req, res) => {
   try {
     const rooms = await Room.findAll({ where: { status: true } });
 
+    logger.info("Rooms fetched successfully");
     return res.status(200).json({ rooms });
   } catch (error) {
     logger.error("Error getting rooms: ", error);
@@ -144,6 +148,7 @@ export const getRoomById = async (req, res) => {
       return res.status(404).json({ message: "Room not found" });
     }
 
+    logger.info("Room fetched successfully: ${room.id}");
     return res.status(200).json({ room });
   } catch (error) {
     logger.error("Error getting room: ", error);
@@ -179,6 +184,7 @@ export const bookRoom = async (req, res) => {
 
     await room.save();
 
+    logger.info("Room booked successfully: ${room.id}");
     return res.status(200).json({ message: "Room booked successfully!", room });
   } catch (error) {
     logger.error("Error booking room: ", error);

@@ -2,8 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
 import sequelize from "./connect.js";
 import logger from "./middlewares/logger.js";
+import globalRateLimiter from "./middlewares/rateLimit.js";
 import "./models/associations.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
@@ -42,9 +44,15 @@ app.use((err, req, res, next) => {
   });
 });
 
+// Middleware to rate limit requests
+app.use(globalRateLimiter);
+
 // Middleware to handle JSON and cookie parsing
 app.use(bodyParser.json()); // Use body-parser to parse JSON bodies
 app.use(cookieParser()); // Use cookie-parser to parse cookies
+
+// Middleware to secure the app by setting various HTTP headers
+app.use(helmet());
 
 // Setup the routes
 app.use("/auth", authRoutes);

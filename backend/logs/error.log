@@ -1,0 +1,11 @@
+2024-10-17T17:39:46.683Z [Hotel Management System] error: Error: WHERE parameter "username" has invalid "undefined" value
+    at PostgresQueryGenerator.whereItemQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1743:13)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1734:25
+    at Array.forEach (<anonymous>)
+    at PostgresQueryGenerator.whereItemsQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1732:35)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1840:30
+    at Array.map (<anonymous>)
+    at PostgresQueryGenerator._whereGroupBind (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1839:21)
+    at PostgresQueryGenerator.whereItemQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1790:19)
+    at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1734:25
+    at Array.forEach (<anonymous>)

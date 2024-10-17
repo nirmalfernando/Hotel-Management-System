@@ -56,6 +56,7 @@ export const updateUser = async (req, res) => {
     // Save the updated user
     await user.save();
 
+    logger.info("User updated successfully: ${user.username} (${user.email})");
     return res
       .status(200)
       .json({ message: "User updated successfully!", user });
@@ -73,6 +74,7 @@ export const getUsers = async (req, res) => {
     // Find all users with the status filter
     const users = await User.findAll({ where: { status: true } });
 
+    logger.info("Users fetched successfully");
     return res.status(200).json({ users });
   } catch (error) {
     logger.error("Error getting users:", error);
@@ -94,6 +96,7 @@ export const getUserById = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
+    logger.info("User fetched successfully: ${user.username} (${user.email})");
     return res.status(200).json({ user });
   } catch (error) {
     logger.error("Error fetching user:", error);
@@ -116,6 +119,7 @@ export const deleteUser = async (req, res) => {
     user.status = false;
     await user.save();
 
+    logger.info("User deleted successfully: ${user.username} (${user.email})");
     return res.status(200).json({ message: "User deleted successfully!" });
   } catch (error) {
     logger.error("Error deleting user:", error);
