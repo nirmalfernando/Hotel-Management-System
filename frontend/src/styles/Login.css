@@ -85,7 +85,7 @@ body {
 
 /* Call to Action Button */
 .login-button {
-  width: 100%;
+  width: 50%;
   padding: 12px;
   background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
   color: white;

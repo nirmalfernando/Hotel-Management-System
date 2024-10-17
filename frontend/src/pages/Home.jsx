@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Home.css';
 import Header from '../components/header';
+import HotelListings from '../components/HotelListings';
 
 const Home = () => {
   return (
@@ -33,8 +34,11 @@ const Home = () => {
           </div>
           <button className="search-btn">Search</button>
         </div>
+        {/* Hotel Lising Section */} 
+        <HotelListings/>
       </div>
     </div>
+  
   );
 };
 

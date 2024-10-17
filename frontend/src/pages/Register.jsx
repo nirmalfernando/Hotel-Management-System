@@ -31,7 +31,7 @@ const Register = () => {
           <div className="success-message">Registration successful!</div> {/* Example success message */}
           <div className="error-message">Registration failed! Please try again.</div> {/* Example error message */}
           <div className='Reg-Text'>
-          <a href="/login">Not Registered yet?</a>
+          <a href="/login">Already have an Account?</a>
             </div>
         </form>
       </div>
