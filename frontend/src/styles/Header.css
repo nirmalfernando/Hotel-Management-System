@@ -1,0 +1,81 @@
+/* Header Container */
+.header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between logo, nav, and user actions */
+    align-items: center; /* Center align items vertically */
+    padding: 20px 5%; /* Top/bottom and left/right padding */
+    background-color: #003580; /* Dark blue background */
+    color: white; /* Text color */
+    position: sticky; /* Make header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Keep it above other elements */
+}
+
+/* Logo */
+.logo {
+    font-size: medium; /* Logo font size */
+    font-weight: bold; /* Bold text */
+    padding-top: 100px; /* Space above logo */
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex; /* Horizontal layout */
+    gap: 20px; /* Space between links */
+}
+
+/* Individual Navigation Link */
+.nav-link {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Navigation Link Hover Effect */
+.nav-link:hover {
+    color: #ff9800; /* Change color on hover */
+}
+
+/* User Actions Section */
+.user-actions {
+    display: flex; /* Horizontal layout for buttons */
+}
+
+/* Register and Sign In Buttons */
+.user-actions .register-btn,
+.user-actions .login-btn {
+    margin-left: 20px; /* Space between buttons */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    padding: 10px 20px; /* Button padding */
+    border: 2px solid white; /* White border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Button hover effects */
+}
+
+/* Button Hover Effect */
+.user-actions .register-btn:hover,
+.user-actions .login-btn:hover {
+    background-color: white; /* Change background on hover */
+    color: #003580; /* Change text color on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack nav links vertically */
+        margin-bottom: 10px; /* Space below nav links */
+    }
+
+    .user-actions {
+        width: 100%; /* Full width for buttons */
+        justify-content: space-between; /* Space out buttons */
+    }
+}
