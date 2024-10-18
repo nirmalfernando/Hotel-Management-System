@@ -7,6 +7,8 @@ import Register from './pages/Register'; // Make sure this path is correct
 import NotFound from './pages/NotFound'; // Make sure this path is correct
 import Home from './pages/Home'; // Make sure this path is correct
 import Hotels from './pages/Hotels'; // Make sure this path is correct  
+import SingleProduct from "./pages/SingleProductPage"; // Make sure this path is correct
+import LoggedUseHome from './pages/LoggedUseHome';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/hotels" element={<Hotels />} />
+        <Route path="/hotel/:id" element={<SingleProduct />} />
         
         {/* Handle 404 page */}
         <Route path="*" element={<NotFound />} />
