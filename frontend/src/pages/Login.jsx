@@ -78,10 +78,8 @@ const Login = () => {
           </button>
         </form>
         {/* Display success or error messages */}
-        {successMessage && (
-          <div className="success-message">Login Successful</div>
-        )}
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {success && <div className="success-message">{success}</div>}
+        {error && <div className="error-message">{error}</div>}
 
         <div className="Reg-Text">
           <a href="/register">Not Registered yet? Create an account</a>
