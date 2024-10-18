@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
+import cors from "cors";
 import sequelize from "./connect.js";
 import logger from "./middlewares/logger.js";
 import globalRateLimiter from "./middlewares/rateLimit.js";
@@ -53,6 +54,14 @@ app.use(cookieParser()); // Use cookie-parser to parse cookies
 
 // Middleware to secure the app by setting various HTTP headers
 app.use(helmet());
+
+// Middleware to enable CORS
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 // Setup the routes
 app.use("/auth", authRoutes);

@@ -7,9 +7,7 @@ export const flightValidationRules = (isUpdate = false) => [
   body("airline")
     .if(() => !isUpdate)
     .isString()
-    .withMessage("Airline must be a string")
-    .isNotEmpty()
-    .withMessage("Airline cannot be empty"),
+    .withMessage("Airline must be a string"),
   body("type")
     .if(() => !isUpdate)
     .isIn(["one-way", "round-trip"])
@@ -17,15 +15,11 @@ export const flightValidationRules = (isUpdate = false) => [
   body("departure")
     .if(() => !isUpdate)
     .isString()
-    .withMessage("Departure must be a string")
-    .isNotEmpty()
-    .withMessage("Departure cannot be empty"),
+    .withMessage("Departure must be a string"),
   body("destination")
     .if(() => !isUpdate)
     .isString()
-    .withMessage("Destination must be a string")
-    .isNotEmpty()
-    .withMessage("Destination cannot be empty"),
+    .withMessage("Destination must be a string"),
   body("departureTime")
     .if(() => !isUpdate)
     .isISO8601()

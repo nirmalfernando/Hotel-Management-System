@@ -26,3 +26,9 @@
 2024-10-17T18:02:01.904Z [Hotel Management System] info: Server is running on port 8000
 2024-10-17T18:03:12.615Z [Hotel Management System] info: Server is running on port 8000
 2024-10-17T18:03:50.191Z [Hotel Management System] info: Server is running on port 8000
+2024-10-18T11:04:26.378Z [Hotel Management System] info: Server is running on port 8000
+2024-10-18T17:14:14.554Z [Hotel Management System] info: Server is running on port 8000
+2024-10-18T17:46:22.194Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-18T17:46:32.430Z [Hotel Management System] info: Users fetched successfully
+2024-10-18T17:49:40.662Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
+2024-10-18T17:49:40.666Z [Hotel Management System] info: Users fetched successfully
