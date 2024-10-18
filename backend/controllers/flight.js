@@ -1,8 +1,65 @@
 import Flight from "../models/flight.js";
 import logger from "../middlewares/logger.js";
+import { body, validationResult } from "express-validator";
+
+// Validation rules for creating/updating a flight
+export const flightValidationRules = (isUpdate = false) => [
+  body("airline")
+    .if(() => !isUpdate)
+    .isString()
+    .withMessage("Airline must be a string")
+    .isNotEmpty()
+    .withMessage("Airline cannot be empty"),
+  body("type")
+    .if(() => !isUpdate)
+    .isIn(["one-way", "round-trip"])
+    .withMessage("Flight type must be either 'one-way' or 'round-trip'"),
+  body("departure")
+    .if(() => !isUpdate)
+    .isString()
+    .withMessage("Departure must be a string")
+    .isNotEmpty()
+    .withMessage("Departure cannot be empty"),
+  body("destination")
+    .if(() => !isUpdate)
+    .isString()
+    .withMessage("Destination must be a string")
+    .isNotEmpty()
+    .withMessage("Destination cannot be empty"),
+  body("departureTime")
+    .if(() => !isUpdate)
+    .isISO8601()
+    .withMessage(
+      "Departure time must be a valid date in ISO format (YYYY-MM-DDTHH:MM:SSZ)"
+    ),
+  body("arrivalTime")
+    .if(() => !isUpdate)
+    .isISO8601()
+    .withMessage(
+      "Arrival time must be a valid date in ISO format (YYYY-MM-DDTHH:MM:SSZ)"
+    ),
+  body("price")
+    .if(() => !isUpdate)
+    .isFloat({ min: 0 })
+    .withMessage("Price must be a positive number"),
+  body("seatNumbers")
+    .if(() => !isUpdate)
+    .isArray()
+    .withMessage("Seat numbers must be an array")
+    .custom((seatNumbers) => seatNumbers.length > 0)
+    .withMessage("Seat numbers cannot be empty"),
+];
 
 // Create a new Flight
 export const createFlight = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors creating flight", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const {
     airline,
     type,
@@ -78,6 +135,14 @@ export const getFlight = async (req, res) => {
 
 // Update a Flight by ID
 export const updateFlight = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors updating flight", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { id } = req.params;
   const {
     airline,

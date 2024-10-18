@@ -1,8 +1,77 @@
 import Hotel from "../models/hotel.js";
 import logger from "../middlewares/logger.js";
+import { validationResult, body } from "express-validator";
+
+// Validation for creating/updating a new Hotel
+export const hotelValidationRules = (isUpdate = false) => [
+  body("name")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Hotel Name is required"),
+  body("type")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Hotel Type is required"),
+  body("city")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("City is required"),
+  body("address")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Address is required"),
+  body("distance")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Distance is required")
+    .isNumeric()
+    .withMessage("Distance must be a number"),
+  body("photos")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Photos are required")
+    .isArray()
+    .withMessage("Photos must be an array"),
+  body("title")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Title is required"),
+  body("description")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Description is required"),
+  body("rating")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Rating is required")
+    .isNumeric()
+    .withMessage("Rating must be a number")
+    .isFloat({ min: 0, max: 5 })
+    .withMessage("Rating must be between 0 and 5"),
+  body("cheapestPrice")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Cheapest Price is required")
+    .isNumeric()
+    .withMessage("Cheapest Price must be a number"),
+  body("featured")
+    .if(() => !isUpdate)
+    .notEmpty()
+    .withMessage("Featured is required")
+    .isBoolean()
+    .withMessage("Featured must be a boolean"),
+];
 
 // Create a new Hotel
 export const createHotel = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors creating hotel", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const {
     name,
     type,
@@ -84,6 +153,14 @@ export const getHotelById = async (req, res) => {
 
 // Update a Hotel by ID
 export const updateHotel = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors updating hotel", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { id } = req.params;
   const {
     name,

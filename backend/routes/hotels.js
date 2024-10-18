@@ -1,14 +1,27 @@
 import express from "express";
-import { createHotel, updateHotel, getHotels, getHotelById, deleteHotel } from "../controllers/hotel.js";
+import {
+  createHotel,
+  updateHotel,
+  getHotels,
+  getHotelById,
+  deleteHotel,
+  hotelValidationRules,
+} from "../controllers/hotel.js";
 import { verifyToken, isAdmin } from "../middlewares/authRole.js";
 
 const router = express.Router();
 
 // Create a new hotel
-router.post("/", verifyToken, isAdmin, createHotel);
+router.post("/", verifyToken, hotelValidationRules(), isAdmin, createHotel);
 
 // Update a hotel
-router.put("/:id", verifyToken, isAdmin, updateHotel);
+router.put(
+  "/:id",
+  verifyToken,
+  hotelValidationRules(true),
+  isAdmin,
+  updateHotel
+);
 
 // Get all hotels
 router.get("/", getHotels);

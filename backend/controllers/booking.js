@@ -2,9 +2,62 @@ import Booking from "../models/booking.js";
 import Hotel from "../models/hotel.js";
 import User from "../models/user.js";
 import logger from "../middlewares/logger.js";
+import { validationResult, body } from "express-validator";
+
+// Validation rules for creating/updating a booking
+export const bookingValidationRules = (isUpdate = false) => [
+  body("bookingType")
+    .if(() => !isUpdate)
+    .isIn(["single", "double", "suite"])
+    .withMessage("Booking type must be either 'single', 'double', or 'suite'"),
+  body("totalPrice")
+    .if(() => !isUpdate)
+    .isFloat({ min: 0 })
+    .withMessage("Total price must be a positive number"),
+  body("checkInDate")
+    .if(() => !isUpdate)
+    .isISO8601()
+    .withMessage(
+      "Check-in date must be a valid date in ISO format (YYYY-MM-DD)"
+    ),
+  body("checkOutDate")
+    .if(() => !isUpdate)
+    .isISO8601()
+    .withMessage(
+      "Check-out date must be a valid date in ISO format (YYYY-MM-DD)"
+    ),
+  body("numOfGuests")
+    .if(() => !isUpdate)
+    .isInt({ min: 1 })
+    .withMessage("Number of guests must be at least 1"),
+  body("specialRequests")
+    .if(() => !isUpdate)
+    .optional()
+    .isString()
+    .withMessage("Special requests must be a string"),
+  body("paymentStatus")
+    .if(() => !isUpdate)
+    .isIn(["pending", "completed"])
+    .withMessage("Payment status must be either 'pending' or 'completed'"),
+  body("userId")
+    .if(() => !isUpdate)
+    .isInt({ min: 1 })
+    .withMessage("User ID must be a positive integer"),
+  body("hotelId")
+    .if(() => !isUpdate)
+    .isInt({ min: 1 })
+    .withMessage("Hotel ID must be a positive integer"),
+];
 
 // Create a new booking
 export const createBooking = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors creating booking", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const {
     bookingType,
     totalPrice,
@@ -110,6 +163,13 @@ export const getBookingById = async (req, res) => {
 
 // Update a booking by id
 export const updateBooking = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors updating booking", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { id } = req.params;
   const {
     bookingType,

@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { body, validationResult } from "express-validator";
 import { Op } from "sequelize";
 import logger from "../middlewares/logger.js";
 
@@ -9,8 +10,47 @@ dotenv.config();
 
 const JWT_SECRET = process.env.JWT;
 
+// Validation rules for user registration
+export const registerValidationRules = [
+  body("username")
+    .isLength({ min: 3 })
+    .withMessage("Username must be at least 3 characters long")
+    .matches(/^[a-zA-Z0-9_]*$/)
+    .withMessage(
+      "Username must contain only letters, numbers, and underscores"
+    ),
+  body("email").isEmail().withMessage("Please provide a valid email address"),
+  body("password")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters long")
+    .matches(/[A-Z]/)
+    .withMessage("Password must contain at least one uppercase letter")
+    .matches(/[a-z]/)
+    .withMessage("Password must contain at least one lowercase letter")
+    .matches(/[0-9]/)
+    .withMessage("Password must contain at least one number")
+    .matches(/[@$!%*?&]/)
+    .withMessage("Password must contain at least one special character"),
+  body("firstName").notEmpty().withMessage("First name is required"),
+  body("lastName").notEmpty().withMessage("Last name is required"),
+  body("contactNumber")
+    .matches(/^[0-9]+$/)
+    .withMessage("Contact number can only contain digits")
+    .isLength({ min: 10, max: 10 })
+    .withMessage("Contact number must be 10 digits long"),
+  body("country").notEmpty().withMessage("Country is required"),
+];
+
 // Register a new user
 export const register = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors while creating user:", errors.array());
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const {
     username,
     email,
@@ -65,8 +105,22 @@ export const register = async (req, res) => {
   }
 };
 
+// Validation rules for user login
+export const loginValidationRules = [
+  body("username").notEmpty().withMessage("Username is required"),
+  body("password").notEmpty().withMessage("Password is required"),
+];
+
 // Login a user
 export const login = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors while logging in user:", errors.array());
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { username, password } = req.body;
 
   try {
