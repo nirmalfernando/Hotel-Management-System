@@ -1,0 +1,159 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+   
+
+  .home-container {
+    width: 100%;
+    text-align: center;
+    background-color: #005bb5; /* Primary blue color */
+    color: rgb(255, 255, 255);
+    min-height: 100vh;
+  }
+  
+  /* Header Section */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #003580;
+    height: 80px;
+    
+  }
+  
+  .logo {
+    font-size: 2rem; /* Increased font size */
+    font-weight: bold;
+    letter-spacing: 1px; /* Added letter spacing for better readability */
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Use gap for consistent spacing */
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #ff9800; /* Color change on hover for interactivity */
+  }
+  
+  .user-actions .register-btn,
+  .user-actions .login-btn {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Added transition */
+  }
+  
+  .user-actions .register-btn:hover,
+  .user-actions .login-btn:hover {
+    background-color: white;
+    color: #003580;
+  }
+  
+  /* Main Search Section */
+  .main-search-section {
+    margin-top: 50px;
+    padding: 20px;
+  }
+  
+  .main-search-section h1 {
+    font-size: 3rem; /* Increased font size for prominence */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .main-search-section p {
+    font-size: 1.5rem; /* Larger subtitle font */
+    margin-bottom: 30px;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 40px 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Slightly wider search bar */
+    margin: 0 auto;
+  
+  }
+  
+  .search-input {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Make inputs take equal space */
+  }
+  
+  .search-input label {
+    font-size: 1rem; /* Increased label size */
+    margin-bottom: 5px;
+    color: #000;
+  }
+  
+  .search-input input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s; /* Input border transition */
+  }
+  
+  .search-input input:focus {
+    border-color: #ff9800; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .search-btn {
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform */
+  }
+  
+  .search-btn:hover {
+    background-color: #e68900;
+    transform: scale(1.05); /* Slight scaling effect on hover */
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .search-bar {
+      flex-direction: column;
+      width: 90%;
+    }
+  
+    .search-input {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .search-btn {
+      width: 100%;
+    }
+  }
+  
+  
