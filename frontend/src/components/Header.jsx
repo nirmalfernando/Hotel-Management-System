@@ -7,7 +7,7 @@ import Home from '../pages/Home';
 const Header = () => {
     return (
         <header className="header">
-            <div className="logo">YourLogo</div>
+            <div className="logo">InnoStay</div>
             <nav className="nav-links">
                 <a href="/" className="nav-link">Home</a>
                 <a href="/Hotels" className="nav-link">Hotels</a>

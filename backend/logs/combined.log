@@ -32,3 +32,5 @@
 2024-10-18T17:46:32.430Z [Hotel Management System] info: Users fetched successfully
 2024-10-18T17:49:40.662Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
 2024-10-18T17:49:40.666Z [Hotel Management System] info: Users fetched successfully
+2024-10-18T18:12:33.151Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
+2024-10-18T18:12:33.154Z [Hotel Management System] info: Users fetched successfully

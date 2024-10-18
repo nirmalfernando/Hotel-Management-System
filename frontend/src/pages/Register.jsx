@@ -1,8 +1,10 @@
 import React from "react";
 import axios from "axios";
 import "../styles/Register.css";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     username: "",
     email: "",
@@ -48,6 +50,9 @@ const Register = () => {
       console.log("Registration successful!", response.data);
       setSuccess("Registration successful!", true);
       setError(null);
+
+      // Redirect to the login page after successful registration
+      navigate("/login");
     } catch (error) {
       console.error("Error registering user:", error);
       setError("Registration failed! Please try again.");
