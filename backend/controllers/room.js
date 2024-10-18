@@ -2,9 +2,51 @@ import Room from "../models/room.js";
 import Hotel from "../models/hotel.js";
 import sequelize from "../connect.js";
 import logger from "../middlewares/logger.js";
+import { body, validationResult } from "express-validator";
+
+// Validation Rules for creating/updating a Room
+export const roomValidationRules = (isUpdate = false) => {
+  body("title")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Title is required"),
+    body("price")
+      .if(() => !isUpdate)
+      .isNumeric()
+      .notEmpty()
+      .withMessage("Price is required"),
+    body("maxPeople")
+      .if(() => !isUpdate)
+      .isNumeric()
+      .notEmpty()
+      .withMessage("Max People is required"),
+    body("description")
+      .if(() => !isUpdate)
+      .isString()
+      .notEmpty()
+      .withMessage("Description is required"),
+    body("roomNumber")
+      .if(() => !isUpdate)
+      .isString()
+      .notEmpty()
+      .withMessage("Room Number is required"),
+    body("bookedDates")
+      .if(() => !isUpdate)
+      .isArray()
+      .optional()
+      .withMessage("Booked Dates must be an array of dates");
+};
 
 // Create a Room under the Hotel through the Hotel ID
 export const createRoom = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    logger.error("Validation errors creating room", errors);
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const hotelId = req.params.hotelid;
   const { title, price, maxPeople, description, roomNumber, bookedDates } =
     req.body;
@@ -54,6 +96,12 @@ export const createRoom = async (req, res) => {
 
 // Update a Room by ID
 export const updateRoom = async (req, res) => {
+  // Handle validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { id } = req.params;
   const { title, price, maxPeople, description, roomNumber, bookedDates } =
     req.body;

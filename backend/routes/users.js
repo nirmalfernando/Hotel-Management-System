@@ -1,11 +1,27 @@
 import express from "express";
-import { updateUser, getUsers, getUserById, deleteUser } from "../controllers/user.js";
-import { verifyToken, isAdmin, isOwnerOrAdmin } from "../middlewares/authRole.js";
+import {
+  updateUser,
+  getUsers,
+  getUserById,
+  deleteUser,
+  userValidationRules,
+} from "../controllers/user.js";
+import {
+  verifyToken,
+  isAdmin,
+  isOwnerOrAdmin,
+} from "../middlewares/authRole.js";
 
 const router = express.Router();
 
 // Update a user
-router.put("/:id", verifyToken, isOwnerOrAdmin, updateUser);
+router.put(
+  "/:id",
+  verifyToken,
+  userValidationRules(true),
+  isOwnerOrAdmin,
+  updateUser
+);
 
 // Get all users
 router.get("/", verifyToken, isAdmin, getUsers);

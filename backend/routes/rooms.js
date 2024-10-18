@@ -1,14 +1,22 @@
-import express from "express"; 
-import { createRoom, updateRoom, deleteRoom, getRoomById, getRooms, bookRoom } from "../controllers/room.js";
+import express from "express";
+import {
+  createRoom,
+  updateRoom,
+  deleteRoom,
+  getRoomById,
+  getRooms,
+  bookRoom,
+  roomValidationRules,
+} from "../controllers/room.js";
 import { verifyToken, isAdmin } from "../middlewares/authRole.js";
 
 const router = express.Router();
 
 // Create a new Room
-router.post("/", verifyToken, isAdmin, createRoom);
+router.post("/", verifyToken, roomValidationRules(), isAdmin, createRoom);
 
 // Update a Room
-router.put("/:id", verifyToken, isAdmin, updateRoom);
+router.put("/:id", verifyToken, roomValidationRules(true), isAdmin, updateRoom);
 
 // Delete a Room
 router.delete("/:id", verifyToken, isAdmin, deleteRoom);

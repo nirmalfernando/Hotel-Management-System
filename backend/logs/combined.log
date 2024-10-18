@@ -34,3 +34,12 @@
 2024-10-18T17:49:40.666Z [Hotel Management System] info: Users fetched successfully
 2024-10-18T18:12:33.151Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
 2024-10-18T18:12:33.154Z [Hotel Management System] info: Users fetched successfully
+2024-10-18T19:28:03.737Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-18T19:28:18.867Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-18T19:31:50.182Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-18T19:31:50.262Z [Hotel Management System] info: Users fetched successfully
+2024-10-18T19:33:11.087Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-18T19:34:41.098Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-18T19:36:41.759Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-18T19:38:18.125Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-18T19:46:23.043Z [Hotel Management System] info: Hotels retrieved successfully
