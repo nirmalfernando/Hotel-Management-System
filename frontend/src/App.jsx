@@ -1,13 +1,13 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
-import './styles/App.css'; // Ensure this file exists
-import './styles/Login.css'; // Ensure this file exists
-import Login from './pages/Login'; // Make sure this path is correct
-import Register from './pages/Register'; // Make sure this path is correct
-import NotFound from './pages/NotFound'; // Make sure this path is correct
-import Home from './pages/Home'; // Make sure this path is correct
-import Hotels from './pages/Hotels'; // Make sure this path is correct  
-import SingleProduct from "./pages/SingleProductPage"; // Make sure this path is correct
+import { Routes, Route } from 'react-router-dom'; 
+import './styles/App.css'; 
+import './styles/Login.css'; 
+import Login from './pages/Login'; 
+import Register from './pages/Register'; 
+import NotFound from './pages/NotFound'; 
+import Home from './pages/Home'; 
+import Hotels from './pages/Hotels';   
+import SingleProduct from "./pages/SingleProductPage"; 
 import LoggedUseHome from './pages/LoggedUseHome';
 
 function App() {
