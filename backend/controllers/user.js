@@ -5,48 +5,48 @@ import logger from "../middlewares/logger.js";
 import { body, validationResult } from "express-validator";
 
 // Validation Rules for creating/updating a User
-export const userValidationRules = (isUpdate = false) => {
+export const userValidationRules = (isUpdate = false) => [
   body("username")
     .if(() => !isUpdate)
     .isString()
     .notEmpty()
     .withMessage("Username is required"),
-    body("email")
-      .if(() => !isUpdate)
-      .isEmail()
-      .notEmpty()
-      .withMessage("Email is required"),
-    body("password")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Password is required"),
-    body("firstName")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("First Name is required"),
-    body("lastName")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Last Name is required"),
-    body("contactNumber")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Contact Number is required"),
-    body("country")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Country is required"),
-    body("role")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Role is required");
-};
+  body("email")
+    .if(() => !isUpdate)
+    .isEmail()
+    .notEmpty()
+    .withMessage("Email is required"),
+  body("password")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Password is required"),
+  body("firstName")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("First Name is required"),
+  body("lastName")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Last Name is required"),
+  body("contactNumber")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Contact Number is required"),
+  body("country")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Country is required"),
+  body("role")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Role is required"),
+];
 
 // Update a user
 export const updateUser = async (req, res) => {

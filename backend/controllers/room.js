@@ -5,38 +5,38 @@ import logger from "../middlewares/logger.js";
 import { body, validationResult } from "express-validator";
 
 // Validation Rules for creating/updating a Room
-export const roomValidationRules = (isUpdate = false) => {
+export const roomValidationRules = (isUpdate = false) => [
   body("title")
     .if(() => !isUpdate)
     .isString()
     .notEmpty()
     .withMessage("Title is required"),
-    body("price")
-      .if(() => !isUpdate)
-      .isNumeric()
-      .notEmpty()
-      .withMessage("Price is required"),
-    body("maxPeople")
-      .if(() => !isUpdate)
-      .isNumeric()
-      .notEmpty()
-      .withMessage("Max People is required"),
-    body("description")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Description is required"),
-    body("roomNumber")
-      .if(() => !isUpdate)
-      .isString()
-      .notEmpty()
-      .withMessage("Room Number is required"),
-    body("bookedDates")
-      .if(() => !isUpdate)
-      .isArray()
-      .optional()
-      .withMessage("Booked Dates must be an array of dates");
-};
+  body("price")
+    .if(() => !isUpdate)
+    .isNumeric()
+    .notEmpty()
+    .withMessage("Price is required"),
+  body("maxPeople")
+    .if(() => !isUpdate)
+    .isNumeric()
+    .notEmpty()
+    .withMessage("Max People is required"),
+  body("description")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Description is required"),
+  body("roomNumber")
+    .if(() => !isUpdate)
+    .isString()
+    .notEmpty()
+    .withMessage("Room Number is required"),
+  body("bookedDates")
+    .if(() => !isUpdate)
+    .isArray()
+    .optional()
+    .withMessage("Booked Dates must be an array of dates"),
+];
 
 // Create a Room under the Hotel through the Hotel ID
 export const createRoom = async (req, res) => {
