@@ -22,7 +22,7 @@ const HotelListings = () => {
 
     fetchHotels();
   }, []);
-};
+
 
 if (loading) {
   return <div>Loading Hotels...</div>;
@@ -62,5 +62,6 @@ return (
     </div>
   </div>
 );
+};
 
 export default HotelListings;
