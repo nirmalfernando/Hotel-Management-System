@@ -9,3 +9,4 @@
     at PostgresQueryGenerator.whereItemQuery (C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1790:19)
     at C:\Users\User\Downloads\hotel-management\Hotel-Management-System\backend\node_modules\sequelize\lib\dialects\abstract\query-generator.js:1734:25
     at Array.forEach (<anonymous>)
+2024-10-19T03:57:27.503Z [Hotel Management System] error: Validation errors creating flight

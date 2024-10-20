@@ -43,3 +43,43 @@
 2024-10-18T19:36:41.759Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
 2024-10-18T19:38:18.125Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
 2024-10-18T19:46:23.043Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:15:21.405Z [Hotel Management System] info: Server is running on port 8000
+2024-10-19T03:32:44.796Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
+2024-10-19T03:39:01.797Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-19T03:44:22.303Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:44:22.310Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:45:10.866Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:45:10.874Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:45:16.666Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:45:16.676Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:53:55.081Z [Hotel Management System] info: Users fetched successfully
+2024-10-19T03:54:01.836Z [Hotel Management System] info: User fetched successfully: ${user.username} (${user.email})
+2024-10-19T03:54:13.313Z [Hotel Management System] info: User updated successfully: ${user.username} (${user.email})
+2024-10-19T03:54:24.268Z [Hotel Management System] info: User deleted successfully: ${user.username} (${user.email})
+2024-10-19T03:55:48.170Z [Hotel Management System] info: Hotel created successfully: ${newHotel.id}
+2024-10-19T03:56:15.662Z [Hotel Management System] info: Hotel updated successfully: ${hotel.id}
+2024-10-19T03:56:26.009Z [Hotel Management System] info: Hotel deleted successfully: ${hotel.id}
+2024-10-19T03:56:31.194Z [Hotel Management System] info: Hotel retrieved successfully: ${hotel.id}
+2024-10-19T03:56:37.659Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T03:57:27.503Z [Hotel Management System] error: Validation errors creating flight
+2024-10-19T03:57:45.207Z [Hotel Management System] info: Flight created successfully: ${newFlight.id}
+2024-10-19T03:58:01.383Z [Hotel Management System] info: Flight updated successfully: ${flight.id}
+2024-10-19T06:01:15.671Z [Hotel Management System] info: Server is running on port 8000
+2024-10-19T06:01:31.668Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T06:01:31.690Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T06:03:49.244Z [Hotel Management System] info: Server is running on port 8000
+2024-10-19T06:03:50.020Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
+2024-10-19T06:04:37.665Z [Hotel Management System] info: User created successfully: ${newUser.username} (${newUser.email})
+2024-10-19T06:05:11.912Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T06:05:11.921Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-19T06:06:10.302Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-19T06:11:30.432Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-19T06:11:37.458Z [Hotel Management System] info: Users fetched successfully
+2024-10-20T05:12:31.846Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-20T05:12:31.852Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-20T05:14:19.819Z [Hotel Management System] info: Server is running on port 8000
+2024-10-20T05:14:35.948Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-20T05:14:35.962Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-20T05:15:09.239Z [Hotel Management System] info: User logged in successfully: ${user.username} (${user.email})
+2024-10-20T05:15:09.299Z [Hotel Management System] info: Hotels retrieved successfully
+2024-10-20T05:15:09.311Z [Hotel Management System] info: Hotels retrieved successfully

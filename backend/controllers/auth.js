@@ -73,7 +73,7 @@ export const register = async (req, res) => {
     }
 
     // Hash the password
-    const salt = bcrypt.genSaltSync(20);
+    const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
     // Create a new user

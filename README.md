@@ -46,6 +46,11 @@ npm install
 
 For frontend:
 
+```bash
+cd Hotel-Management-System/frontend/
+npm install
+```
+
 ### 3. Database Setup
 
 You have to use PostgreSQL to set up the database
@@ -118,4 +123,11 @@ Run the application using Node.js:
 
 ```bash
 npm start
+```
+2. **Start the Frontend**
+
+Run the application using following command:
+
+```bash
+npm run dev
 ```
