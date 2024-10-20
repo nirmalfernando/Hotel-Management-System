@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Hotel management system with modular API architecture. It includes endpoints for user registration, login, and logout, as well as for managing hotels and their rooms.
+This project is a Hotel management system with modular API architecture. It includes endpoints for user registration, login, and logout, as well as for managing hotels and their rooms with a frontend that is designed where user can Register, Login, and Logout, Checkout and Search Hotels and Book the Rooms based on the availability
 
 ## Prerequisites
 
